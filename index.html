@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AuthGuard - Secure Your Accounts</title>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap');
+
+      :root {
+        --my-gradient: linear-gradient(270deg, #006aff, #7909ee);
+      }
+
+      body {
+        margin: 0; 
+        font-family: "Urbanist", sans-serif;
+        font-optical-sizing: auto;
+        font-weight: 400;
+        font-style: normal;
+      }
+
+      body > header {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background-color: black;
+        color: white;
+      }
+
+      body > header .title {
+        font-size: 128px; 
+        font-weight: 800;
+        margin: 0;
+      }
+
+      body > header ul {
+        list-style: none;
+        display: flex;
+        justify-content: center;
+        font-size: 1.25rem;
+      }
+
+      body > header ul > li {
+        margin-left: 0.5rem;
+        margin-right: 0.5rem;
+      }
+
+      .call-to-action {
+        background: var(--my-gradient);
+        color: white;
+        font-size: 1.5rem;
+        font-weight: 500;
+        padding: 0.75rem 1.5rem;
+        border: 0;
+        border-radius: 0.5rem;
+        cursor: pointer;
+      }
+
+      .gradient {
+        background: var(--my-gradient); 
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        /* For Firefox */
+        background-clip: text;
+        color: transparent;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="gradient">
+        <h1 class="title">AuthGuard</h1>
+      </div>
+      <button class="call-to-action">
+        Download
+      </button>
+      <ul>
+        <li>Open-Source</li>
+        <li>Free</li>
+        <li>Independent</li>
+      </ul>
+    </header>
+  </body>
+</html>
