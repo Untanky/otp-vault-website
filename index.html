@@ -1,85 +1,784 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>AuthGuard - Secure Your Accounts</title>
+    <meta charset="utf-8" />
+    <title>OTP Vault — Effortless, Secure 2FA on iOS</title>
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
+    <meta
+      name="description"
+      content="OTP Vault is a beautiful, secure two‑factor authenticator
+      for iOS. Scan QR codes, back up to iCloud, and protect your accounts
+      with strong, time‑based one‑time passwords."
+    />
+    <meta property="og:title" content="OTP Vault — iOS 2FA App" />
+    <meta
+      property="og:description"
+      content="Scan, store, and autofill your 2FA codes with end‑to‑end
+      encryption and iCloud sync."
+    />
+    <meta property="og:type" content="website" />
+    <meta name="theme-color" content="#0f172a" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ["Inter", "ui-sans-serif", "system-ui", "sans-serif"],
+            },
+            colors: {
+              ink: {
+                50: "#f8fafc",
+                100: "#f1f5f9",
+                200: "#e2e8f0",
+                300: "#cbd5e1",
+                400: "#94a3b8",
+                500: "#64748b",
+                600: "#475569",
+                700: "#334155",
+                800: "#1e293b",
+                900: "#0f172a",
+              },
+            },
+          },
+        },
+      };
+    </script>
     <style>
-      @import url('https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap');
-
       :root {
-        --my-gradient: linear-gradient(270deg, #006aff, #7909ee);
+        color-scheme: light dark;
       }
-
-      body {
-        margin: 0; 
-        font-family: "Urbanist", sans-serif;
-        font-optical-sizing: auto;
-        font-weight: 400;
-        font-style: normal;
-      }
-
-      body > header {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        background-color: black;
-        color: white;
-      }
-
-      body > header .title {
-        font-size: 128px; 
-        font-weight: 800;
-        margin: 0;
-      }
-
-      body > header ul {
-        list-style: none;
-        display: flex;
-        justify-content: center;
-        font-size: 1.25rem;
-      }
-
-      body > header ul > li {
-        margin-left: 0.5rem;
-        margin-right: 0.5rem;
-      }
-
-      .call-to-action {
-        background: var(--my-gradient);
-        color: white;
-        font-size: 1.5rem;
-        font-weight: 500;
-        padding: 0.75rem 1.5rem;
-        border: 0;
-        border-radius: 0.5rem;
-        cursor: pointer;
-      }
-
-      .gradient {
-        background: var(--my-gradient); 
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        /* For Firefox */
-        background-clip: text;
-        color: transparent;
+      html {
+        scroll-behavior: smooth;
       }
     </style>
   </head>
-  <body>
-    <header>
-      <div class="gradient">
-        <h1 class="title">AuthGuard</h1>
+  <body
+    class="bg-white text-ink-900 antialiased dark:bg-ink-900 dark:text-ink-100"
+  >
+    <!-- Hero / Header -->
+    <header
+      class="relative overflow-hidden border-b border-ink-100/60 bg-white
+      dark:border-white/10 dark:bg-ink-900"
+    >
+      <div
+        class="pointer-events-none absolute inset-0 -z-10 opacity-60
+        [background:radial-gradient(70%_60%_at_50%_0%,rgba(37,99,235,0.25),transparent_60%),radial-gradient(50%_50%_at_80%_10%,rgba(20,184,166,0.22),transparent_60%)] dark:opacity-70"
+      ></div>
+
+      <div class="mx-auto max-w-7xl px-6 py-20 sm:py-28 lg:py-32">
+        <div class="mx-auto max-w-3xl text-center">
+          <span
+            class="mb-5 inline-flex items-center gap-2 rounded-full border
+            border-ink-200/70 px-3 py-1 text-xs font-medium text-ink-600
+            shadow-sm backdrop-blur-sm dark:border-white/10 dark:text-ink-300"
+          >
+            New on iOS
+            <span
+              class="inline-block h-1.5 w-1.5 rounded-full bg-teal-500"
+            ></span>
+          </span>
+
+          <h1
+            class="bg-gradient-to-r from-indigo-500 via-blue-500 to-teal-400
+            bg-clip-text text-5xl font-extrabold tracking-tight text-transparent
+            sm:text-6xl md:text-7xl"
+          >
+            OTP Vault
+          </h1>
+
+          <p
+            class="mx-auto mt-6 max-w-2xl text-balance text-lg leading-7
+            text-ink-600 dark:text-ink-300"
+          >
+            A beautiful, secure two‑factor authenticator for iPhone. Scan QR
+            codes in a tap, organize your accounts, and keep your 2FA tokens
+            safe with end‑to‑end encryption and iCloud backup.
+          </p>
+
+          <div
+            class="mx-auto mt-10 flex w-full flex-col items-center justify-center
+            gap-4 sm:flex-row"
+          >
+            <!-- Replace href with your real App Store URL -->
+            <a
+              href="https://apps.apple.com/app/id0000000000"
+              aria-label="Download OTP Vault on the App Store"
+              class="group inline-flex items-center gap-3 rounded-xl bg-black
+              px-5 py-3 text-left shadow-lg ring-1 ring-black/10 transition
+              hover:shadow-xl dark:bg-white dark:text-black dark:ring-white/20"
+              rel="noopener"
+              target="_blank"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-6 w-6 shrink-0 text-white dark:text-black"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                aria-hidden="true"
+              >
+                <path
+                  d="M16.365 1.43c-.948.056-2.07.676-2.726 1.47-.596.718-1.1 1.888-.904 3.014
+                  1.04.08 2.12-.524 2.79-1.34.637-.778 1.127-1.944.84-3.144zM21.66
+                  17.273c-.44 1.02-.966 1.994-1.575 2.917-.83 1.245-1.83
+                  2.79-3.274 2.81-1.23.02-1.626-.8-3.02-.8-1.396
+                  0-1.833.78-3.063.82-1.47.06-2.59-1.345-3.42-2.585C5.03
+                  18.29 3.5 14.11 5.28 11.22c.95-1.56 2.64-2.54 4.48-2.56
+                  1.16-.02 2.25.84 3.02.84.77 0 2.1-1.04 3.54-.89.6.03
+                  2.29.24 3.37 1.82-.09.06-2.01 1.18-2.03 3.49-.02 2.77
+                  2.36 3.71 2.4 3.72z"
+                />
+              </svg>
+              <div class="flex flex-col leading-none">
+                <span
+                  class="text-xs text-white/80 dark:text-black/70"
+                >
+                  Download on the
+                </span>
+                <span class="text-lg font-semibold">App Store</span>
+              </div>
+            </a>
+
+            <a
+              href="#features"
+              class="inline-flex items-center gap-2 rounded-xl border
+              border-ink-200/70 px-5 py-3 text-sm font-semibold text-ink-800
+              shadow-sm transition hover:bg-ink-50 dark:border-white/10
+              dark:text-ink-100 dark:hover:bg-white/5"
+            >
+              See how it works
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-4 w-4"
+                viewBox="0 0 20 20"
+                fill="currentColor"
+                aria-hidden="true"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M10.293 3.293a1 1 0 011.414 0l5
+                  5a1 1 0 010 1.414l-5 5a1 1 0
+                  01-1.414-1.414L13.586 10H4a1 1 0
+                  110-2h9.586l-3.293-3.293a1 1 0
+                  010-1.414z"
+                  clip-rule="evenodd"
+                />
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Phone mockups -->
+        <div
+          class="relative mx-auto mt-16 grid max-w-5xl grid-cols-1 place-items-center
+          sm:mt-20 md:grid-cols-2"
+        >
+          <!-- Phone A -->
+          <div
+            class="relative order-2 mt-10 md:order-1 md:mt-0 md:justify-self-end"
+          >
+            <div
+              class="w-[260px] rounded-[2rem] border border-black/20 bg-neutral-900
+              p-2 shadow-2xl ring-1 ring-black/20 dark:border-white/10
+              dark:ring-white/10"
+            >
+              <div
+                class="aspect-[9/19] overflow-hidden rounded-[1.7rem]
+                bg-gradient-to-b from-neutral-800 to-neutral-900"
+              >
+                <!-- Notch -->
+                <div
+                  class="mx-auto mt-2 h-5 w-32 rounded-b-2xl bg-black/70"
+                ></div>
+                <!-- Toolbar -->
+                <div class="px-4 py-3">
+                  <div
+                    class="flex items-center justify-between text-xs
+                    text-white/60"
+                  >
+                    <span>9:41</span>
+                    <div class="flex items-center gap-2">
+                      <span class="h-1.5 w-6 rounded bg-white/30"></span>
+                      <span class="h-1.5 w-4 rounded bg-white/30"></span>
+                      <span class="h-1.5 w-2 rounded bg-white/30"></span>
+                    </div>
+                  </div>
+                </div>
+                <!-- App header -->
+                <div class="px-4">
+                  <div
+                    class="mb-3 flex items-center justify-between text-white"
+                  >
+                    <h3 class="text-lg font-semibold">OTP Vault</h3>
+                    <button
+                      class="rounded-lg bg-white/10 px-2 py-1 text-xs
+                      text-white/80"
+                    >
+                      Edit
+                    </button>
+                  </div>
+                </div>
+                <!-- OTP list -->
+                <div class="space-y-3 px-4 pb-6">
+                  <!-- Item -->
+                  <div
+                    class="rounded-xl border border-white/10 bg-white/5 p-3
+                    backdrop-blur"
+                  >
+                    <div
+                      class="mb-2 flex items-center justify-between
+                      text-white/90"
+                    >
+                      <div class="flex items-center gap-2">
+                        <div
+                          class="h-6 w-6 rounded bg-gradient-to-br
+                          from-blue-400 to-indigo-500"
+                        ></div>
+                        <div class="text-sm">GitHub</div>
+                      </div>
+                      <div
+                        class="text-xs text-white/60"
+                        aria-label="expires in"
+                      >
+                        12s
+                      </div>
+                    </div>
+                    <div class="flex items-center gap-2">
+                      <div
+                        class="flex gap-2 rounded-lg bg-black/40 px-3 py-2
+                        font-mono text-lg tracking-widest text-white"
+                      >
+                        <span>7</span><span>4</span><span>2</span><span>1</span
+                        ><span>9</span><span>0</span>
+                      </div>
+                      <button
+                        class="ml-auto rounded-lg bg-white/10 px-3 py-2 text-xs
+                        text-white/80"
+                      >
+                        Copy
+                      </button>
+                    </div>
+                  </div>
+
+                  <!-- Item -->
+                  <div
+                    class="rounded-xl border border-white/10 bg-white/5 p-3
+                    backdrop-blur"
+                  >
+                    <div
+                      class="mb-2 flex items-center justify-between
+                      text-white/90"
+                    >
+                      <div class="flex items-center gap-2">
+                        <div
+                          class="h-6 w-6 rounded bg-gradient-to-br
+                          from-emerald-400 to-teal-500"
+                        ></div>
+                        <div class="text-sm">Notion</div>
+                      </div>
+                      <div class="text-xs text-white/60">28s</div>
+                    </div>
+                    <div class="flex items-center gap-2">
+                      <div
+                        class="flex gap-2 rounded-lg bg-black/40 px-3 py-2
+                        font-mono text-lg tracking-widest text-white"
+                      >
+                        <span>1</span><span>2</span><span>5</span><span>9</span
+                        ><span>6</span><span>3</span>
+                      </div>
+                      <button
+                        class="ml-auto rounded-lg bg-white/10 px-3 py-2 text-xs
+                        text-white/80"
+                      >
+                        Copy
+                      </button>
+                    </div>
+                  </div>
+
+                  <!-- Item -->
+                  <div
+                    class="rounded-xl border border-white/10 bg-white/5 p-3
+                    backdrop-blur"
+                  >
+                    <div
+                      class="mb-2 flex items-center justify-between
+                      text-white/90"
+                    >
+                      <div class="flex items-center gap-2">
+                        <div
+                          class="h-6 w-6 rounded bg-gradient-to-br
+                          from-pink-400 to-rose-500"
+                        ></div>
+                        <div class="text-sm">Dropbox</div>
+                      </div>
+                      <div class="text-xs text-white/60">45s</div>
+                    </div>
+                    <div class="flex items-center gap-2">
+                      <div
+                        class="flex gap-2 rounded-lg bg-black/40 px-3 py-2
+                        font-mono text-lg tracking-widest text-white"
+                      >
+                        <span>0</span><span>8</span><span>4</span><span>7</span
+                        ><span>3</span><span>1</span>
+                      </div>
+                      <button
+                        class="ml-auto rounded-lg bg-white/10 px-3 py-2 text-xs
+                        text-white/80"
+                      >
+                        Copy
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Phone B (angled) -->
+          <div class="relative order-1 md:order-2 md:justify-self-start">
+            <div
+              class="relative -rotate-6 transform opacity-95"
+              aria-hidden="true"
+            >
+              <div
+                class="w-[240px] rounded-[1.8rem] border border-black/20
+                bg-neutral-900 p-2 shadow-2xl ring-1 ring-black/20
+                dark:border-white/10 dark:ring-white/10"
+              >
+                <div
+                  class="aspect-[9/19] overflow-hidden rounded-[1.5rem]
+                  bg-gradient-to-b from-neutral-800 to-neutral-900"
+                >
+                  <div class="px-4 pt-5">
+                    <div
+                      class="mx-auto mb-4 h-44 w-full rounded-xl border
+                      border-white/10 bg-gradient-to-br from-indigo-500/20
+                      via-blue-500/20 to-teal-400/20"
+                    ></div>
+                    <div class="space-y-2">
+                      <div
+                        class="h-3 w-40 rounded bg-white/15"
+                      ></div>
+                      <div
+                        class="h-3 w-24 rounded bg-white/10"
+                      ></div>
+                    </div>
+                  </div>
+                  <div class="px-4 pt-4">
+                    <div class="flex gap-2">
+                      <div
+                        class="h-14 w-1/3 rounded-xl border border-white/10
+                        bg-white/5"
+                      ></div>
+                      <div
+                        class="h-14 w-1/3 rounded-xl border border-white/10
+                        bg-white/5"
+                      ></div>
+                      <div
+                        class="h-14 w-1/3 rounded-xl border border-white/10
+                        bg-white/5"
+                      ></div>
+                    </div>
+                  </div>
+                  <div class="p-4">
+                    <div
+                      class="flex items-center justify-center rounded-xl
+                      bg-white/10 px-3 py-2 text-xs text-white/80"
+                    >
+                      Scan QR to add account
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="absolute -inset-2 -z-10 rounded-[2rem] bg-gradient-to-r
+                from-indigo-500/20 via-blue-500/10 to-teal-400/20 blur-2xl"
+              ></div>
+            </div>
+          </div>
+        </div>
       </div>
-      <button class="call-to-action">
-        Download
-      </button>
-      <ul>
-        <li>Open-Source</li>
-        <li>Free</li>
-        <li>Independent</li>
-      </ul>
     </header>
+
+    <!-- Features -->
+    <section id="features" class="relative">
+      <div class="mx-auto max-w-7xl px-6 py-20 sm:py-24">
+        <div class="mx-auto max-w-3xl text-center">
+          <h2 class="text-pretty text-3xl font-bold tracking-tight sm:text-4xl">
+            Secure your accounts without hassle
+          </h2>
+          <p
+            class="mx-auto mt-4 max-w-2xl text-ink-600 dark:text-ink-300 sm:text-lg"
+          >
+            See how OTP Vault keeps your 2FA codes safe and at your fingertips.
+          </p>
+        </div>
+
+        <!-- Horizontal scroll with snap -->
+        <div
+          class="-mx-6 mt-12 overflow-x-auto pb-6 scroll-px-6 sm:mt-16"
+          aria-label="Feature cards"
+        >
+          <div class="flex snap-x snap-mandatory gap-6 px-6">
+            <!-- Card 1 -->
+            <article
+              class="snap-start min-w-[90%] rounded-3xl border border-ink-100/70
+              bg-white shadow-md transition hover:shadow-lg dark:border-white/10
+              dark:bg-white/5 sm:min-w-[640px] lg:min-w-[860px]"
+            >
+              <div class="flex">
+                <div
+                  class="relative w-36 overflow-hidden rounded-l-3xl sm:w-44
+                  md:w-56"
+                >
+                  <img
+                    src="https://placehold.co/500x800/png?text=Encrypted+Vault"
+                    alt="iPhone screen showing an encrypted OTP vault"
+                    class="h-full w-full aspect-[9/16] object-cover"
+                  />
+                </div>
+                <div class="flex-1 p-6 sm:p-8">
+                  <h3 class="text-2xl font-semibold">Private by design</h3>
+                  <p class="mt-3 text-base text-ink-600 dark:text-ink-300">
+                    End‑to‑end encryption keeps secrets on your devices only.
+                    Protect access with Face ID and a strong passcode.
+                  </p>
+                </div>
+              </div>
+            </article>
+
+            <!-- Card 2 -->
+            <article
+              class="snap-start min-w-[90%] rounded-3xl border border-ink-100/70
+              bg-white shadow-md transition hover:shadow-lg dark:border-white/10
+              dark:bg-white/5 sm:min-w-[640px] lg:min-w-[860px]"
+            >
+              <div class="flex">
+                <div
+                  class="relative w-36 overflow-hidden rounded-l-3xl sm:w-44
+                  md:w-56"
+                >
+                  <img
+                    src="https://placehold.co/500x800/png?text=QR+Scanning"
+                    alt="iPhone camera scanning a 2FA QR code"
+                    class="h-full w-full aspect-[9/16] object-cover"
+                  />
+                </div>
+                <div class="flex-1 p-6 sm:p-8">
+                  <h3 class="text-2xl font-semibold">Scan and organize</h3>
+                  <p class="mt-3 text-base text-ink-600 dark:text-ink-300">
+                    One‑tap QR capture with automatic issuer detection. Clean lists,
+                    search, and sorting keep codes exactly where you need them.
+                  </p>
+                </div>
+              </div>
+            </article>
+
+            <!-- Card 3 -->
+            <article
+              class="snap-start min-w-[90%] rounded-3xl border border-ink-100/70
+              bg-white shadow-md transition hover:shadow-lg dark:border-white/10
+              dark:bg-white/5 sm:min-w-[640px] lg:min-w-[860px]"
+            >
+              <div class="flex">
+                <div
+                  class="relative w-36 overflow-hidden rounded-l-3xl sm:w-44
+                  md:w-56"
+                >
+                  <img
+                    src="https://placehold.co/500x800/png?text=Offline+Codes"
+                    alt="iPhone showing offline OTP codes list"
+                    class="h-full w-full aspect-[9/16] object-cover"
+                  />
+                </div>
+                <div class="flex-1 p-6 sm:p-8">
+                  <h3 class="text-2xl font-semibold">Works everywhere</h3>
+                  <p class="mt-3 text-base text-ink-600 dark:text-ink-300">
+                    Codes are generated locally and work offline. Optional iCloud
+                    sync keeps your vault up to date across iPhone and iPad.
+                  </p>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section
+      id="faq"
+      class="border-t border-ink-100/70 bg-ink-50/40 py-20 dark:border-white/10
+      dark:bg-white/5"
+    >
+      <div class="mx-auto max-w-5xl px-6">
+        <div class="mx-auto max-w-3xl text-center">
+          <h2 class="text-3xl font-bold tracking-tight sm:text-4xl">
+            Frequently asked questions
+          </h2>
+          <p
+            class="mx-auto mt-4 max-w-2xl text-ink-600 dark:text-ink-300
+            sm:text-lg"
+          >
+            Everything you need to know about using OTP Vault with your
+            accounts.
+          </p>
+        </div>
+
+        <div class="mx-auto mt-10 max-w-3xl space-y-4">
+          <!-- QA 1 -->
+          <details
+            class="group rounded-2xl border border-ink-100/70 bg-white/70
+            p-5 shadow-sm backdrop-blur-sm transition
+            hover:shadow-md open:bg-white dark:border-white/10
+            dark:bg-white/5 dark:open:bg-white/10"
+          >
+            <summary
+              class="flex cursor-pointer list-none items-center justify-between
+              gap-4"
+            >
+              <h3 class="text-base font-semibold">
+                What is OTP Vault, exactly?
+              </h3>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-5 w-5 shrink-0 text-ink-500 transition
+                group-open:rotate-180 dark:text-ink-300"
+                viewBox="0 0 20 20"
+                fill="currentColor"
+                aria-hidden="true"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M5.23 7.21a.75.75 0 011.06.02L10
+                  10.94l3.71-3.71a.75.75 0 111.06 1.06l-4.24
+                  4.24a.75.75 0 01-1.06 0L5.21 8.29a.75.75 0
+                  01.02-1.08z"
+                  clip-rule="evenodd"
+                />
+              </svg>
+            </summary>
+            <div
+              class="mt-3 text-sm leading-6 text-ink-700 dark:text-ink-200"
+            >
+              OTP Vault is a two‑factor authentication app that generates
+              time‑based one‑time passwords (TOTP) for your online accounts.
+              It’s private, fast, and designed for iOS.
+            </div>
+          </details>
+
+          <!-- QA 2 -->
+          <details
+            class="group rounded-2xl border border-ink-100/70 bg-white/70
+            p-5 shadow-sm backdrop-blur-sm transition
+            hover:shadow-md open:bg-white dark:border-white/10
+            dark:bg-white/5 dark:open:bg-white/10"
+          >
+            <summary
+              class="flex cursor-pointer list-none items-center justify-between
+              gap-4"
+            >
+              <h3 class="text-base font-semibold">
+                Does it sync between my devices?
+              </h3>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-5 w-5 shrink-0 text-ink-500 transition
+                group-open:rotate-180 dark:text-ink-300"
+                viewBox="0 0 20 20"
+                fill="currentColor"
+                aria-hidden="true"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M5.23 7.21a.75.75 0 011.06.02L10
+                  10.94l3.71-3.71a.75.75 0 111.06 1.06l-4.24
+                  4.24a.75.75 0 01-1.06 0L5.21 8.29a.75.75 0
+                  01.02-1.08z"
+                  clip-rule="evenodd"
+                />
+              </svg>
+            </summary>
+            <div
+              class="mt-3 text-sm leading-6 text-ink-700 dark:text-ink-200"
+            >
+              Yes. With iCloud, your encrypted vault can stay up to date across
+              iPhone and iPad. Only your devices can decrypt your data.
+            </div>
+          </details>
+
+          <!-- QA 3 -->
+          <details
+            class="group rounded-2xl border border-ink-100/70 bg-white/70
+            p-5 shadow-sm backdrop-blur-sm transition
+            hover:shadow-md open:bg-white dark:border-white/10
+            dark:bg-white/5 dark:open:bg-white/10"
+          >
+            <summary
+              class="flex cursor-pointer list-none items-center justify-between
+              gap-4"
+            >
+              <h3 class="text-base font-semibold">
+                Can I import from Google Authenticator or others?
+              </h3>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-5 w-5 shrink-0 text-ink-500 transition
+                group-open:rotate-180 dark:text-ink-300"
+                viewBox="0 0 20 20"
+                fill="currentColor"
+                aria-hidden="true"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M5.23 7.21a.75.75 0 011.06.02L10
+                  10.94l3.71-3.71a.75.75 0 111.06 1.06l-4.24
+                  4.24a.75.75 0 01-1.06 0L5.21 8.29a.75.75 0
+                  01.02-1.08z"
+                  clip-rule="evenodd"
+                />
+              </svg>
+            </summary>
+            <div
+              class="mt-3 text-sm leading-6 text-ink-700 dark:text-ink-200"
+            >
+              Absolutely. Import by scanning QR codes or pasting otpauth://
+              URIs. Bulk import and CSV are supported where providers allow it.
+            </div>
+          </details>
+
+          <!-- QA 4 -->
+          <details
+            class="group rounded-2xl border border-ink-100/70 bg-white/70
+            p-5 shadow-sm backdrop-blur-sm transition
+            hover:shadow-md open:bg-white dark:border-white/10
+            dark:bg-white/5 dark:open:bg-white/10"
+          >
+            <summary
+              class="flex cursor-pointer list-none items-center justify-between
+              gap-4"
+            >
+              <h3 class="text-base font-semibold">
+                What if I lose my phone?
+              </h3>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-5 w-5 shrink-0 text-ink-500 transition
+                group-open:rotate-180 dark:text-ink-300"
+                viewBox="0 0 20 20"
+                fill="currentColor"
+                aria-hidden="true"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M5.23 7.21a.75.75 0 011.06.02L10
+                  10.94l3.71-3.71a.75.75 0 111.06 1.06l-4.24
+                  4.24a.75.75 0 01-1.06 0L5.21 8.29a.75.75 0
+                  01.02-1.08z"
+                  clip-rule="evenodd"
+                />
+              </svg>
+            </summary>
+            <div
+              class="mt-3 text-sm leading-6 text-ink-700 dark:text-ink-200"
+            >
+              Use your recovery methods: iCloud‑synced vault on a new device,
+              recovery codes from each service, or an encrypted backup you keep
+              safe.
+            </div>
+          </details>
+
+          <!-- QA 5 -->
+          <details
+            class="group rounded-2xl border border-ink-100/70 bg-white/70
+            p-5 shadow-sm backdrop-blur-sm transition
+            hover:shadow-md open:bg-white dark:border-white/10
+            dark:bg-white/5 dark:open:bg-white/10"
+          >
+            <summary
+              class="flex cursor-pointer list-none items-center justify-between
+              gap-4"
+            >
+              <h3 class="text-base font-semibold">
+                Does OTP Vault support AutoFill?
+              </h3>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-5 w-5 shrink-0 text-ink-500 transition
+                group-open:rotate-180 dark:text-ink-300"
+                viewBox="0 0 20 20"
+                fill="currentColor"
+                aria-hidden="true"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M5.23 7.21a.75.75 0 011.06.02L10
+                  10.94l3.71-3.71a.75.75 0 111.06 1.06l-4.24
+                  4.24a.75.75 0 01-1.06 0L5.21 8.29a.75.75 0
+                  01.02-1.08z"
+                  clip-rule="evenodd"
+                />
+              </svg>
+            </summary>
+            <div
+              class="mt-3 text-sm leading-6 text-ink-700 dark:text-ink-200"
+            >
+              Yes, OTP Vault integrates with iOS AutoFill to suggest your
+              codes right from the keyboard, in apps and Safari.
+            </div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-white py-10 dark:bg-ink-900">
+      <div
+        class="mx-auto flex max-w-7xl flex-col items-center justify-between
+        gap-4 px-6 text-center sm:flex-row sm:text-left"
+      >
+        <p class="text-sm text-ink-500 dark:text-ink-400">
+          © <span id="year"></span> OTP Vault. All rights reserved.
+        </p>
+        <div class="flex items-center gap-4">
+          <a
+            href="#features"
+            class="text-sm text-ink-600 hover:text-ink-900
+            dark:text-ink-300 dark:hover:text-white"
+          >
+            Features
+          </a>
+          <a
+            href="#faq"
+            class="text-sm text-ink-600 hover:text-ink-900
+            dark:text-ink-300 dark:hover:text-white"
+          >
+            FAQ
+          </a>
+          <a
+            href="mailto:support@example.com"
+            class="text-sm text-ink-600 hover:text-ink-900
+            dark:text-ink-300 dark:hover:text-white"
+          >
+            Support
+          </a>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // Set current year in footer
+      const y = document.getElementById("year");
+      if (y) y.textContent = new Date().getFullYear().toString();
+    </script>
   </body>
 </html>
+
